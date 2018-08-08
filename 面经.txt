@@ -1,0 +1,647 @@
+Palantir面经
+March 16, 2015 shawnlin91 面经Palantir
+1，
+1. 给你一个棋盘 int[][] board, 你可以交换任何一个棋子和它的邻居（横向或者竖向相邻的棋子），如果交换后，在横向或者竖向产生了大于等于三个连续的一样的棋子 e.g. 4 4 4
+5
+5
+5
+那么就算交换有效。(就是一个比较常见的游戏，忘记叫啥名字了)
+请你写一个函数返回所有可以有效交换的棋子的坐标对。 比如 （（0， 0）， （1， 0）） ， （（3,2），（3,3））.
+
+2，看code，debug， 然后写出正确的code，这个没啥说的
+
+3 Merge interval
+Running Median : follow up: O(1) space
+
+2,
+write a fuction to titlecase a string
+for example
+input: the quick brown fox
+output: The Quick Brown Fox
+two pointers, remember to update flag
+
+
+DFS,很像coursera普林算法课讲得CC， 看看所以0是不是在一个CC里面
+从0，0开始做一次DFS，如果有0没被marked到那就是invalid的
+
+3,
+Palantir:
+电面
+Given a vector, two items are considered duplicates if their indexes are within k. Find whether there are duplicates.
+Given two nodes in a tree, find the least common ancestor
+
+onsite
+Given an array, return the end index and difference of longest arithmetic sequence (no need to be consecutive).
+Given a list of string, return the list of prefix that can uniquely define each string.
+Given a string, return the number of characters you need to put at the end of the string in order for the string to be a palindrome.
+Debug a program written in Java. The program is used to implement a smart way of lexicographical comparator. Problem: wrong output and slow run time.
+Given a list of weights (each one associated with a label), generate a random label based on the weight. What if the label needs to be generated many times? How to speed up?
+主要还是偏重coding，就是最后一轮讨论了下machine learning的相关问题
+
+4,
+magic box
+http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=110120&extra=&highlight=palantir&page=1
+
+5,
+1
+1) Select Sort in place. Input: [2, 7, 1, 4, 5], 3 Output: [2, 1, 7, 4, 5]
+2) Given a number n, count the sum of all a, which a<n and a%3 == 0 || a%7 == 0. For example, Input: 10 Output: 25 (3, 6, 7, 9) use constant time
+
+2 Merge interval 的变形题.
+Input: we have the time line of several jobs.
+For example, Job A: [18, 25] Job B: [20 22] [24 27] Job C: [30 50]
+Output: [18 20] A [20 22] AB [22 24] A [24 25] AB [25 27] B [30 50] C
+
+3 Sort the nearly sorted array, in the array, every element is at most k distance with its final place. 一开始用常规的k size heap，但是被明确要求用multi-thread来提速，这个方法是不行了。应该用2K的方法来divide and conquer。用多线程最终可以提速到O(klogk)
+first, mention insertion sort, O(nk) inner loop只需要比较k次
+second, heap O(nlogk) 前面k个还可以有heapify做
+third, divide into n/k份， 依次merge B_i B_(i+1)， 那么B_i sorted, B_i+1 ksorted，算法课作业
+
+6，
+OA
+first non-repeated character
+Given an input string, update the string so that a letter t is never followed by h
+
+7，
+
+1. LRU cache
+2. given an array of integers, return an array whose ith value is the median of the first i integers in the input
+follow up, if the input is too large, how can you solve it using only constant memory? You can have random access to the ith value in the input array. Expected runtime O(n^2) or faster
+3. HR phone screen: why Palantir, what to expect, how do you think the interview, have you seen the interview questions before?. 1point3acres.com/bbs
+
+8,
+第一轮白人女面试官，Implement Rabin-Karp Algorithm. 对，就是pattern matching三算法之一的那个，要求在eclipse里面实现并且通过test cases.
+做出来了但不是特别流畅，中间卡了壳。经验是如果想进顶级公司，不是说KMP, Boyes-Moore, Rabin-Karp 侃侃而谈就能打动面试官。任何成名算法都要做到一张白纸拍下去马上写出来bug free的代码。
+第二轮白人男面试官，Code debugging. 给出一段代码，指出其中的问题并修改。这一轮做的还不错，面试官也比较满意。这一轮比较看平时项目经验和写代码的积累，考虑问题要全面。
+第三轮白人男面试官，Online median. 双heap解决之。Follow up 是不可以使用heap, 不可以改变Input array. 这里的follow up 处理的不太好，没有给出最优解
+
+9,
+店面：
+第一轮问的是merge interval
+第二轮问的是lru cache，还有一道题是说给定一个数组，这个数组有一个特性是，每一个元素距离其排序后的位置，最多差k个距离，然后叫我将这个数组排序，要求时间复杂度好于nlogn.
+
+第一题，主题是coding，check一系列byte是不是合法的utf8编码。utf8的定义大家可以去网上搜一下，具体我记不太清了。这轮主要是看代码是否简介清晰，无奈写出了一个bug。情况是这样，有一种byte组合是永远不会出现在utf8的编码里的，我忘记考虑了这种情况，结果就是跪在这个上面。
+
+第二题，考algorithm，给一个数组，要求输出一个数组，第一个是原数组第一个的中位数（就是原数组的第一个），第二个是原数组第一个到第二个的中位数，第三个是原数组第一个到第三个的中位数，以此类推。我一开始说用一个最大堆和一个最小堆来做，然后又要求constant space来做。
+
+第三题，考system design，题目是设计一个distributed 的key-value store.
+
+10,
+1. 上来自我介绍
+2. 挑简历里一个项目聊.
+3. 第一道是reverse list。当时就傻眼了，我还问了一句，有没有环
+4. 写一个可以运行的贪吃蛇backend。以前只听同学说过面google设计贪吃蛇，写还是第一次。士气大落，在动手前浪费了不少时间。虽然在提示下写出了大部分但是还是没有写完，如果一拿到就开始动手其实并不难。
+
+snake class
+判断蛇的生死，存储蛇的位置，移动蛇的方法
+
+board class
+food的生成
+
+11,
+题目是给定一个矩阵，里面有0和非0值. 求最大的连通的非0元素的加和。用dfs做吧，要记得update访问过的元素为0
+follow up是如果有负数在里面怎么办。我的想法是跟maximum subarray的解法一样，running time估计在O(n2)。不知道对不对.
+
+12,
+第一题是Merge Interval， leetcode原题。
+第二题和第三题都只要我说解题思路，用什么data structure以及runtime complexity，估计是因为他打电话迟了十分钟，怕时间不够。
+/**
+* Write a function that is given an array of integers. It should return true if
+* any value appears at least twice in the array, and it should return false if every element is distinct..
+boolean containsDuplicate(int[] arr) {}
+–
+/**
+* Write a function that is given an array of integers and an integer k. It
+* should return true if and only if there are two distinct indices i and j into.
+* the array such that arr[i] = arr[j] and the difference between i and j is at most k.
+*/
+boolean containsNearbyDuplicate(int[] arr, int k) {}.
+
+13,
+1. HR的电话，问问毕业时间，简述职位内容等例行公事。最后问了个single number的简单题，口答就行了
+
+2. 第一次电面， 面试官是个年级比楼主小的本科生，简单问问简历，介绍实习经历。然后问了个设计题，设计分布式拍卖系统，楼主给了一个client-server的解和一个p2p的解，然后问了个简单的文本里找字典里的词的题(口答)，楼主给了个hashset，然后follow-up是anagram怎么解。
+（面试官表示满意，move on）
+
+3. 第二次电面，面试官是一位phd，简单寒暄过后直入主题：第一道经典的无限输入流找中位数，第二道无限输入流找平均值，第三道无限输入流找mode。中间夹杂着问了溢出如何处理（转成字符串，或用链表，又问字符串和链表的优劣，存储位置不同）。前两道题楼主也是马上给出最优解就解了，最后一题卡了一下，面试官提示了一下也马上就搞定了，很快，总共35分钟。
+（面试官表示满意，move on）
+
+Onsite:
+于是一个星期后就飞到了palo alto，酒店的环境很不错，接机司机是一位百人金发MM。第二天早上，楼主到了office，check in，然后上到三楼。当天总共大约有16位候选人左右（包括所有职位），大部分是面实习职位（Palantir把实习生也onsite了）。公司目测三哥极少，大部分是白人和亚裔(目测不少abc)。
+
+一. 10点开始第一面。是位白人女面试官，寒暄过后是道设计题，mini-yelp。设计了存储的数据结构，然后问了2-D空间如何找最近的点，楼主给了个heap的解，面试官说可以用二分解。但这轮的主要还是面设计。最后问了如何测试mini-yelp，尤其是如何在分布式环境下测试min-yelp。（从测试case等）.
+
+二. 第二位面试官，这就是此次onsite之行的缺憾了。在Palantir遇到的所有的面试官都很nice很有耐心，除了这位。典型的技术宅，穿着人字拖进来了坐下后很显然没睡醒，一遍哈欠一遍说：我想..想啊，给你出个什么..么题..（无语）。然后楼主等了一会，这位大爷终于想出了个DAG的题，然后楼主clarify了一下约束条件（面试官显然没睡醒，模模糊糊地答了一下），原来就是detect cycle。楼主马上用DFS写好了，可是这时问题来了，面试官看着白板上的DFS说：你的DFS会返回”false true”。楼主以为写出了bug，于是盯着这短短几行DFS看了又看，实在是找不出bug了，说：hmm..let me see… hmm … this looks good. 面试官欲言又止憋着什么似的，说：这..这个DFS是没问题的，但..但..在一些情况下会”false true”，你能不能给出那些情况？（我勒个去，这false true是面试官您说的喂，你应该给出case才对，我实在想不出DFS为啥不能detect cycle）然后面试官从坐着的抠脚丫子（他是真的在抠脚丫子）的状态站起来，在白板上画了个图，说：这..这种情况。哦好吧，原来是一次DFS不能cover所有点，然后面试官又说：你能不能..hmm..这个是O(n)的啊，能不能小于O(n)？于是楼主开始思考如何小于O(n)的情况下detect cycle（没想出来，楼主以为是拓扑排序，或者其他算法）…无奈时间最后只剩下五分钟时候楼主似乎明白了面试官的意图。但时间已不够，问了两个问题草草结束了。
+
+三. 第三位面试官貌似是位ABC，非常有礼貌而且干净整洁，和之前那位“技术宅”形成强烈反差。寒暄过后先是讲了一个project，楼主在白板上画出来后面试官表示很满意，中间没有涂改，面试官表示很满意，交流也很顺畅。然后开始做题，也都是给出题，楼主马上给了最优解然后写出来，面试官表示满意。做了好几题，面试官表示很不错直到时间快不够了。分别是dict找word，anagram，edit distance 1, edit distance，然后到general。面试官表示很有兴趣继续讨论下去，但可惜时间到了，楼主问了个问题就结束了。
+. visit 1point3acres.com for more.
+然后午饭后看了个demo，等了一会楼主被hr叫走，给了个T恤说面试结束了。楼主知道，他家一般面不到4-5轮就挂了。
+
+整体的感觉是：题目并不难，跟面试官的交流很重要，要注意code的细节，领会面试官的意图。尤其是当思维发散太多的时候要及时止住。但是如果面试官“没睡醒”或者一开始就不耐烦的话就很麻烦了，所以运气在面试中也是很重要的。
+
+总之这是一次意外的onsite：楼主没想到能onsite。Onsite中又出了意外，最后还是不幸挂了。把这次经历写一写，希望对其他人有帮助吧。
+
+14,
+Palantir：
+第一轮OA是Magic Box的题，地里曾经有过。第二轮电面是个很nice的白人小哥，先问了merge two sorted list， 又问了merge K sorted list，然后说让用MinHeap，也就是Java 里面的priorityQueue 来优化。由于对heap不熟，卡住了一小会儿，在小哥不断的提示下才想出来。然后又问了改进前后的时间和空间复杂度。不知道能不能过，不过听说他家bar很高。
+
+15,
+recruiter phone screen，会问你为什么选Palantir，我说完了以后他说注意他们有philanthropy engineering，帮助救灾等等，给我感觉如果提到这个会有帮助，提升“culture fit”
+
+coding challenge，跟网上说的一样，flip columns那个题，搜一下就知道啦
+
+phone interview，跟网上说的一样，find duplicates, find duplicates within distance k, find fuzzy duplicates within distance k… 顺利做完后onsite
+
+onsite，我不知道是full stack简单还是怎么，题都比较简单
+running median.
+min stack
+get top k numbers in max heap
+follow up也都不难，做得很顺利，做完他们都说good, excellent, perfect之类的
+在电脑上coding的问题，map相关，不是算法题，是多线程有关的，但个人感觉不用担心，按时写完即可
+UI设计题，设计一个网页上的file explorer，这个很难自我评估做得好不好，反正他都是说上面那三个词-google
+
+泛泛地讨论如何设计一个twitter api，怎么考虑性能之类的，没有特别具体深入的系统设计的题
+最后跟一个manager泛泛地聊天，还问了我小时候是怎么开始对计算机感兴趣的。。。
+.
+面完感觉没什么问题，尤其是technical部分，我本来准备好了手写strstr三大算法，结果没出现-google 1point3acres
+
+两天后打电话说不给offer，我说有什么feedback，他说algorithm部分还可以做得更好。。。表示不是很理解
+
+所以，我个人的感觉是传说中的bar高，并不是technical方面的，更多的是culture，聊天时他们说他们工作时间比一般公司长，工资并不成比例增长，因为员工都爱这个工作，有使命感等等，一个组一般有人崩溃到quit才会招新人进来补充人手，而且没有分级title，大家都是software engineer，极端flat。可能有同学会喜欢吧，但我并没有发现他们的产品有什么特别神奇/有趣的地方，而且说员工有使命感什么的，只能说我culture上确实不太fit可能被发现了
+
+16，
+Tower of Hanoi
+
+17,
+leetcode
+rotate array
+
+18,
+clone graph DFS and BFS
+
+19,
+第一轮，求一个string list的每个string对应的unique prefix，返回也是一个list。我用Trie解决，建Trie、查找写了半个大黑板。面试官觉得很好。
+第二轮，简单来说就是求2个数组的交集，然后follow up，变形的奇奇怪怪，现在都不知道他要干什么，很麻烦，弄了半天没怎么弄懂，然后时间到了。
+第三轮，求数组都最长等差数列（要求连续），follow up 可以不连续，这里答得不太好，直接暴力做了
+第四轮，求一些区间的相交次数最多的任意一点。因为一开始是区间是int类型，我直接开了个数组，每读取一个区间就＋＋，然后求数组最大的点就行了。follow up区间是float类型，之前方法明显不行，后来先按区间的start排序，然后每次比较end，好麻烦感觉，弄了半天没符合他的要求。
+
+电面（45分钟一轮，第二次是加面，一般是一面）
+一：
+1，FizzBuzz，考基本功，感谢白人小帅哥。
+2，Inorder Traversal, iterative和recursive。
+3，Inorder successor, 元素可能不在tree内。
+
+二：
+1，Valid BST, 要求至少两种办法。用inorder traversal和min-max法解决了。
+2，MaxPath，找出一个树上最长的任意点到任意点的路径，GeekforGeek有原题。
+
+Onsite：（1小时一轮，第一轮因为我接着BlackRock面试晚了半小时，所以缩短了）
+一：
+1，N个unsorted数，找出最长的连续等差序列。暴搜外加几个全局统计变量就可以。
+2，升级版，不要求连续，可以有间隔的等差序列就可以，第一题配合DP解。有些难，最后没把DP的转换方程写好。
+
+二：
+1，扯天聊项目，问了一些key value pair和relational的performance比较。
+2，给N个string，找出他们各自的unique prefix，比如abc, bac, xyz, aac的unique prefix就是ab, b, x, aa，也就是最短的能idenfity原string的prefix。一个办法是一个字母一个字母扫所有string，然后建立hashmap，扫完一次，map里为1的写进结果里，然后用递归去一路扫后面。另外一个办法是用trie，把字符串转90度，然后每个重复字母下面都会延伸出下一层的child，一层层延伸tree，不能延伸的时候就把这条path写到结果里去。
+
+三：:
+1. 先是isPalindrome，轻松撸掉。
+2. 然后findPalindromeRemainder，找到最短的“拼在一个非palindrome字符串后面，使它变成palindrome的”额外字符串，比如baba就是拼个a在后面。做一个原字符串suffix树和倒转过来的字符串prefix树，然后两个树同时遍历，到第一个不同的元素，记下index，把原字符串从0到index的倒着append到原字符串后面就可以了。
+3. 机器人走格子，要求生成所有路线，而不只是单纯的总方法数。改下返回的结果和递归时的传参。
+
+四：
+Design加算法混合，输入是N个日期和每个日期上发生的两种交易的交易量，交易量可以为0，然后要求存储交易量历史，同时输出所有两种交易量都不为0的日期的交易历史。难度不大，做好各种边界检查就好，要求不能存0交易量的相关数据。还要求最简化代码。
+
+20,
+1. find missing number.
+给一个sorted array, 这个array的size是N-K
+原本这个array应该是有从1-N，N个数 但是miss了K个
+请找出这miss的K个数
+
+INPUT
+N = 10
+array = [3 4 6 7 9 10]
+
+OUTPUT
+[1 2 8]
+
+followup
+如果只miss了两个数呢？
+http://www.geeksforgeeks.org/find-the-missing-number/
+
+2. 2. 区间重叠总数
+给一堆区间
+给N个query，每个query是一个数k
+返回包含k的区间的个数
+[1, 3] [2, 5] [4, 8]
+
+OUTPUT
+1 -> 1
+2 -> 2
+9 -> 0
+
+3.还有一道题跟trie有关，但是不记得了。大家自行熟悉一下trie的insert和find的实现吧
+
+21,
+第一轮abc，主要是让我设计一个拱猪纸牌游戏。。。想了一下就一口气写到了这轮结束，主要就是把card，suit，deck，player，game全部都抽象出了应有的类。。然后实现了关键函数，面试官应该是很满意的。。。这轮应该是做的最好的一轮了
+
+第二轮白人，上来问我做过的那道一个乱序数组每个数的位置距离他应有的位置差不超过k，如何更快的排序数组。。直接给出了minheap的解法。。表示同意。。。然后问我乱序数组找排序好的median, kselection, 讲了原理以及时间复杂度的best和worst，写了kselection的code，一遍bug free。。他表示还算满意。。。这轮一开始他带着电脑进来的，不知道是不是一开始打算让我在ide上面写，后面看我太菜了就改成直接在白板上面写了
+
+第三轮白人， 设计一个monitor system，主要用来监控server群以及想前端的server传监控的更新数据。。上来给出了基本函数框架，然后开始各种发散。。我讲到了bottleneck是http request，解决办法是多线程，讲了线程数的tradeoff，还有如何实现函数的thread-safe，估算了大概的时间，还有一些关于communication的小问题。。问的问题基本都答出来了。。。最后看时间差不多就停了，走的时候还捋了一遍想聊的topic，说主要的已经聊到了
+
+22，
+running median
+min stack
+get top k numbers in max heap
+follow up也都不难，做得很顺利，做完他们都说good, excellent, perfect之类的
+在电脑上coding的问题，map相关，不是算法题，是多线程有关的，但个人感觉不用担心，按时写完即可
+UI设计题，设计一个网页上的file explorer，这个很难自我评估做得好不好，反正他都是说上面那三个词
+泛泛地讨论如何设计一个twitter api，怎么考虑性能之类的，没有特别具体深入的系统设计的题
+
+23，
+1 面试官一进来先问lz，认为写code最重要是什么，lz说是correctness，其次是space time 复杂度。他不满意，说假设你写的所有code写的都是正确的，你想写什么code，然后lz扯了扯自己的research里写的code，感觉他也没什么兴趣就开始出题。总之一上来就让lz感觉怪怪的，沟通的不好。
+设计纸牌游戏，完整设计一个类，实现deck功能，还有几个其他功能。中间不停打断，问oo design的很多考虑。lz从来没准备过design的问题，所以第一面结束就知道已经gg了。
+
+2 实现一个改进的double linkedlist数据结构，第i个node存2^i 个数据。要求实现添加元素和get第i个元素两个功能，其中add要求O(1), get(int index)要求worst(log n), average O(1)。面试官拿了一台笔记本，坐在我旁边看我敲。一开始写的复杂度不满足要求，给hint之后才写出来。
+
+3 streaming setting下，要求uniform random 输出一个之前读入过的data point，要求constant space。然后follow up 输出k个uniform random数据。这一面答的比较快，也还算聊得来，然后还聊了下他们组做的项目，还蛮有意思。
+
+24，
+lintcode word_search 2 with trie
+
+25,
+第一轮：
+给你一个byte数组 判断是不是一串合理的utf-8编码
+
+第二轮：
+实现vlist的数据结构 这个结构内部实现是一系列数组 长度分别为1 2 4 8… 连续存储 前一个满了才能开辟下一个数组的空间
+要求实现两个函数& T.
+void append(T element) 复杂度O(1)
+T getByIndex(int index) 复杂度O(logn)
+
+第三轮：
+第一题 leetcode原题 set matrix zero
+第二题 给你一个二位数组 每一行从左到右递增排列 每一列从上往下递增排列 要搜某个数存不存在
+
+第四轮
+给你一台机器作为administrator 查看一系列services是否工作正常 有没有down 怎么设计？
+Follow up: 加了一些限制 administrator有100个线程 每个线程只能发一个阻塞的request给一个service 只能调用getstatus函数 每个request如果正常返回 需要100ms 如果超时就是3min 有5000个service 分布在一些主机上 不允许修改主机内容
+继续follow up。如果要在1min内得到结果 并且已知有200个service挂了 怎么办
+
+26
+电面.
+Given a vector, two items are considered duplicates if their indexes are within k. Find whether there are duplicates..
+Given two nodes in a tree, find the least common ancestor.
+
+onsite
+Given an array, return the end index and difference of longest arithmetic sequence (no need to be consecutive).
+Given a list of string, return the list of prefix that can uniquely define each string.
+Given a string, return the number of characters you need to put at the end of the string in order for the string to be a palindrome.
+Debug a program written in Java. The program is used to implement a smart way of lexicographical comparator. Problem: wrong output and slow run time.
+Given a list of weights (each one associated with a label), generate a random label based on the weight. What if the label needs to be generated many times? How to speed up?
+
+27,
+第一题是majority element,网上有个moore algorithm， 可以去搜一下看看
+第二题是word search
+第三题是股票问题。
+
+##########################################################################################
+
+FLAG面试经验大合集
+助教:
+标签: 亚马逊 谷歌 苹果 脸书 优步 掉盒子 雅虎 PINTEREST PALANTIR 
+九章管理员助教
+发表于 2016/4/15 上午3:11:54 · 0个赞
+Yahoo
+最早面的公司，面的是Flurry Team，Yahoo去年收购的一家在城里的小公司，所以不一定有代表性。因为re-org我两个月之后才拿到offer，中间还给我match到其他team几次，Yahoo比较动荡，个人也不看好。
+
+电面：
+
+和director聊了有两个小时，无coding，问了很多之前project内容和hadoop相关的内容。
+
+最后讨论了一道design，如何设计distributed key-value store，因为他们主要用HBase。
+
+Programming Test:
+
+Validate Soduko Solution，从文件读solution，尽量用production标准写程序。
+
+Onsite：
+
+五轮Onsite没有coding，全是问实际问题怎么解决和design。
+
+1. 如何设计一个priorityqueue service，client可以submit job request然后server按照priority执行
+
+2. 需要一个key-value store with 1M qps，most read，1ms 99% latency，如果用HBase的话会有什么问题，怎么解决
+
+3. 给很多整数，如何用mapreduce找median，如果是很多float数，可以有一定的误差，如何找
+
+4. Programming Test的扩展，如果soduku matrix非常之大怎么做
+
+然后还有一大堆针对hadoop的各种情况下怎么optimize的问题
+
+onsite完了之后他们director说very positive，然后就开始re-org两个月。Flurry做的东西其实挺有意思，mobile analytics platform #1，我感觉他们engineer人很nice，水准也非常不错，可惜没缘分。
+
+
+
+Apple
+练手公司1，Apple可以同时面很多组，每个组有各自的recruiter。我把简历递了之后陆续有10个组联系我，然后每个组基本上都是onsite之前两轮phone，一开始没经验联系了4个组后来发现实在体力吃不消，光电面就8轮。最后3个组要onsite，这里我犯了一个错误，告诉他们我在面其他的组，一旦他们知道你在面其他的组就不跟进了，打死不回email。所以最终我只onsite了一个组。
+
+电面：
+
+1.给平面一堆点，把所有在同一条直线上的点group在一起，求出所有的group
+
+2.一种encoding的方法，如果一个byte第一个bit是0，比如 00000000，那它自己表示一个字符，如果一个byte第一个bit是1，比如 10000000，那它和它后面紧跟的byte表示一个字符，现在给一个byte array，判断最后一个字符是一个byte还是两个byte组成。
+
+3.parse message from byte stream，message format是前4个bytes组成的int值表示 message的长度L，然后后面连续的L个byte是message真正的内容，每个message都是这样表示，需要一边读byte stream一边parse每个message
+
+4. 两个table做join有哪几种方法，分别有哪些drawback
+
+5. merge two sorted list
+
+6. sqrt(double number, double epsilon)
+
+7. auto completion implementation using trie
+
+8. edit distance
+
+9. Implement blockingqueue
+
+10. how is a hive query transferred to mapreduce jobs
+
+Onsite:
+
+1. given a list of pairs, pair.first 表示parent, pair.second表示child, reconstruct the tree, return the root node.
+
+2. auto completion - design the service
+
+3. design a service, accept stream of events, each event has a type and timestamp, need to support the query of top k most frequent types in a query specified [start, end] time range.
+
+4. closest number to target in BST
+
+5. validate soduku / solve soduku, and optimizations
+
+6. 给一个json object，给一个wildcard path with ‘?’ as arbitrary name，比如
+
+a.?.b 找到所有符合path的objects
+
+Apple一般onsite的时候4轮tech interview，中午的时候将来的manager带着吃午饭。
+
+如果tech这4轮面的好会有第5轮见到hiring manager，如果有这一轮基本说明offer没啥问题了，这轮会是一堆behavior。如果第5轮也没啥问题会有第6轮见大boss，继续behavior，会问之前做过的project有多牛叉，会吹就行。
+
+同等级下Apple的offer远不如FG给力，而且match不上去，bonus也不会写在offer letter里面，虽然据说每年的refresh有些组相当多，但是感觉整体上跟FG还是差距比较大。而且组跟组工作强度差别也很大，有些组忙死有些组闲死，不过software的组一般都还好，感觉大部分人精神状态还是不错的。
+
+就engineer水平来看，我有遇到水平相当不错的面试官，但是整体水准远不如FG。
+
+他们各个组做项目是完全分开的，基本没交流。做东西完全是product driven，不过engineer一般需要fullstack，需要自己end to end维护一个product，这点对有些人可能还比较有吸引力。
+
+Amazon
+练手公司2，我面的是marketing solution和ads相关的team。大公司周期很长，感觉recruiter不是很上心。
+
+电面：
+
+三哥，但是感觉还行没黑。
+
+1.用trie来解决求dictionary里面所有符合given prefix的word。然后又扩展到prefix里面有wildcard的情况，然后继续讨论如果要design a system做这个事情怎么搞，需要注意哪些问题。
+
+Onsite：
+
+居然没有遇到三哥，除了一轮老中外其他都是老白，每一轮开始都是至少15分钟的behavior，而且每个人还能换着花样问不一样的问题，感觉大部分脑细胞都花在这些没用的东西上面了，所以感觉很不爽。
+
+1. OOD Restaurant Reservation System
+
+2. Merge K Sorted List
+
+3. K Sized Sliding Window Sum/Minimum Value
+
+4. 给一个css file里面很多class，然后class name里面其实很多重复的，怎么 compress用尽量最小size的string来表示，这样传输的byte比较少。
+
+5. shorten url system design
+
+6. longest palindromic substring 
+
+7. robot moving from topleft to bottomright corner of a matrix，matrix里面有些cell是障碍物不能通过，只能往下或者往右走，有多少种方法。
+
+8. 之前做的项目，和我之前坑爹公司的architecture 相比起他们的behavior问题，我觉得亚麻的engineer水平相当一般，很多design principle都不知道，可能因为他们内部都直接用aws很多细节都不需要考虑，也有可能跟我面的组有关系，如果面的是aws会好些吧。
+
+亚麻最后给我senior title，但是package跟其他几家比起来差距略大，所以也就没再继续谈。
+
+
+
+WalmartLab
+我面的是walmartlab里面仅存的几个不是三哥的组，通过靠谱的朋友内推。
+
+面试题整体难度也还好，算法基本上都是常见题目，国人面试官都非常非常非常nice。
+
+只说其中几轮比较有意思的吧
+
+1.topological sort
+
+2.design web crawler system，how to scale，what would be the bottle neck and how to solve the problem
+
+3. 如何用semaphore或者condition variable实现3个process p1, p2, p3，p2必须要p1结束才能运行，p3必须要p2结束才能运行
+
+4. bloom filter 如何implement，estimate false rate
+
+5. what is the best design pattern do you think and why
+
+他们onsite有一轮会是跟product manager聊天，就是瞎扯。一个小时我都在绞尽脑汁找话题，应该是类似culture fit吧，看看你是不是比较容易融入team。
+
+walmartlab是第一个给我比较decent offer的公司，cash给的很多，所以其实我很感激，而且我面的组的work life balance极好，我见过的最好的没有之一，onsite居然有两轮是video因为面试官WFH。平时干活也非常自由，没有OKR，没有deadline（是的你没看错，啥都没有，performance完全老板说了算）。
+
+不去walmartlab的原因是我觉得他们实在缺有经验的engineer，而且很多做的很多东西都是实验性质的，没有明显的business impact，现阶段我还是比较想去一个大腿比较多的地方抱一下。
+
+
+
+Sumo Logic
+一开始看到这家公司里面好多MIT毕业的人，而且听说他们bar很高，所以一开始也只是想拿来做一下benchmark。他们基本上都用scala，如果懂一点scala效果会比较好但是不懂对面试也完全没有影响。
+
+他们的面试是先一轮phone，然后两次onsite，第一次onsite2轮，第二次onsite3轮，第一次onsite过了才会有第二次onsite。第二次onsite每一轮会有两个面试官，每个面试官都会出一道题目。
+
+电面：
+
+1. 两个binary tree，每个node存的值有两种可能，1或者0，把两个tree对应node做or操作。
+
+极为简单，扯了一下immutable data structure然后聊了一会之前做的东西就过了。
+
+onsite 1：
+
+1. 纯聊project和讨论他们现有的data ingestion架构，刚好他们最近想用Kafka所以就这个话题聊了一个小时，最后没时间做题就结束了
+
+2. 小三哥，但是也不黑。
+
+given a list of intervals，query if another interval is totally covered by the list of intervals。
+
+totally covered是指整个区间都被某些已有的区间 cover了。
+
+比如如果有 list of intervals = 【（1， 4），（2，8）】
+
+given interval【3，6】就被完全cover了。
+
+然后扩展到design a system来做这个事情，可以query，也可以insert interval，假设query操作的频率远远大于insert操作，并且interval的数量非常非常多。
+
+onsite 2：
+
+1. 有意思的题目1，设计Bi-directional LRU cache data structure，既可以lookup key to get value，也可以lookup value to get key，还支持set(key, value)操作，后面又加了条件，concurrent的情况下，会有什么问题，如何改进，假如set这个操作的频率远远小于get这个操作的频率，需要写代码实现。
+
+2. robot from topleft to bottomright LC原题，无障碍和有障碍
+
+3. given a list of sets，find all pair of sets having any intersection
+
+4. 有意思的题目2，设计caltrain system，要实现caltrain上车下车刷卡扣钱整个功能，assume每个station都跟一个central server相连，要处理如果有network
+
+partition怎么办，eventually车费还是要charge到账户上，但是不能影响partition的station正常运作。要处理某些人下车没刷卡怎么办，followup可以非常多
+
+5. 有意思的题目3，仍然是设计一个cocurrent环境下的time leased cache，但是有些区别，假如delete操作是一个daemon thread来做不用太多考虑，但是get(key)操作的逻辑是如果key不在cache里面，需要一个非常expensive的操作把对应value load进来，如何让这个load的操作对同一个key尽量少发生，需要写代码实现。
+
+这家的题目我觉得非常有意思，engineer都超级nice，感觉我见过的人的能力都非常不错，年轻一点的反应非常快，年长一点的经验非常丰富。整体上看三哥并不多，虽然engineering vp是三哥。
+
+这家很有诚意，最后给我的base跟walmartlab差不多，再加上很难估值的option。他们觉得他们的bar很高，能过他们面试的人不多，所以一旦你过了他们面试，要做好被他们的recruiter不停骚扰的准备。
+
+有关这个公司，在其他帖子里面我提到过，虽然engineering vp是个三哥，但是感觉还比较靠谱，不像某些三哥吹牛没有边际，对于整个公司发展的前景比较有数，business model也很promising，最近刚刚拿到一笔80M的投资
+
+
+
+Palantir
+号称湾区面试最难的公司。但是again我运气比较好没有碰到很难的题目。我觉得这家公司有点吹的过大了，本身做的东西根本没有什么技术含量，里面都是一群没经验的stanford小年轻，都是自我感觉超好。另外去这家公司要做好准备每周工作60hours。
+
+估值150亿了还给option我也是醉了，能上市不？我的看法就是这家公司基本就是坑，从哪个角度来讲都不值得去。
+
+他们的onsite上午会有3轮，然后中午吃完饭后会有一个小时的demo（因为实在没什么意思所以我差点睡着了），如果上午过了下午还会有1 - 2轮，一般下午会有一轮system design，另一轮是见hiring manager，如果上午没过demo结束就可以回家了。
+
+电面：
+
+万年不变的电面题，给一个array，问有没有duplicate
+
+follow up1，只要index的距离 < k并且value相同就算duplicate
+
+follow up2，只要index的距离 < k并且value的绝对值差 < d 就算duplicate
+
+follow up3，follow up2能不能有time complexity O(n)的解？
+
+Onsite：
+
+1. OOD astroid game，就是飞机打石块的游戏，石块可以任意形状可以移动，飞机撞上就挂了，飞机可以发射子弹，子弹打上石块会把石块分成多个小石块按照不同方向和速度移动。要写伪代码。
+
+2. 每个person有一个list of intervals，表示busy的时间段，问最busy的一段时间分别都是谁busy。
+
+3. 一个描述起来不算简单的题目，但是算法不难，在版上看到过但是细节记不清了，好像是给一堆stock profile然后算profit
+
+4. 一个2d matrix，被分成好几个区域，区域之间都是value为0的cell，每一堆connected的非0cell算是一个区域，问和最大的区域是哪个，要设计API，怎么用json return结果。
+
+5. system design又是 distributed key-value store，万年不变的题目，后来没啥好聊的只好跟面试官扯他们的那个atlas，distributed transaction layer，没办法想拿offer跪舔还是需要的。
+
+基本上每个面试官都是一副老子很牛逼的样子，一问他们到底做了什么牛逼的东西马上支支吾吾说不出个所以然。他们的offer也没诚意，150k的base + 25k signon + 55000option，没谈就直接拒掉了。
+
+
+
+Dropbox
+Dropbox的面试题都是从题库出的，但问题是他们的题库并不大。所以，我可以负责任的说，你在这个版上找到的面经题目，你在面试过程中绝对能碰到。另外他们复杂的算法题目并不多，但是大部分是跟concurrency有关的问题。
+
+一般标配是 2轮电面 + 6轮onsite，6轮onsite中居然有两轮是behavior和culture fit
+
+另外，他们面试的要求都是要写能run的code，要写完整的solution，不能写个主要function就完事。
+
+电面：
+
+1. 给一堆file，如何比较有效率的把内容完全相同的file group到一起，file可能非常大
+
+2. 被人面过无数次的电话号码转成string，然后再word break那个题目
+
+Onsite：
+
+1. log_hit(), get_last_5mins_hits()那个题目，concurrent怎么搞
+
+2. token bucket，假设每x秒提供一个token，然后外面可以申请任意数量的token，如果token不够就block，要求concurrent情况下，不能有专门的thread产生token，怎样用最简单的方法实现
+
+3. web crawler，要分析可能的bottleneck，然后转化成concurrent运行的版本，写runnable代码。
+
+4. system desgin那一轮是两个三哥，轮流轰炸了一个小时，把我之前做的所有东西完全推翻了，所以这一轮没结束我就知道肯定挂了。
+
+
+
+Uber
+Uber的效率不是一般的牛叉。我从刚开始被Uber联系到最后拿到offer基本在一个周之内搞定。面完了Uber之后真的有点心动，因为面我的人我觉得都很牛逼，人也都很超nice，非常乐于提供很多关于Uber的信息，整个氛围非常积极向上。老板虽然是个三哥，但是也没有任何能吐槽的地方，他手下现在也基本都是老中。
+
+电面：
+
+一般电面会是hiring manager，除了问了一下之前做过什么之外只有一道题目：
+
+OOD card deck，要现场deug，需要能运行
+
+电面后一个小时通知我可以onsite
+
+Onsite：
+
+onsite一般是5轮，中间老板带着吃午饭
+
+5轮中必然有一轮是只讨论之前做过的project，要做好准备，一定要对自己之前做的东西特别熟另外我面试过程中问了不少怎么设计一个系统解决Uber实际问题这种题目，很新颖很有意思
+
+1. 问了我不少关于storm的问题，比如storm怎么保证exact once/at least once semantic，如何做timed window join，因为我简历上有相关的东西，然后让我用storm来做一个比较简单的sliding window count。
+
+2. big integer multiplication，要求现场运行代码。
+
+3. longest increasing subarray，longest increasing subpath in a tree，path只能从root到某个leaf
+
+4. boggle game，given a boggle board and a dictionary，find all words on the board，
+
+follow up，如果dictionay 不变但是board不停的变怎么优化
+
+follow up，如果board不变但是dictionary不停的变怎么优化
+
+5. given a matrix only containing 1 or 0，find how many rectangles are 4个角都是1
+
+6. how to design a system to automatically detect hotspot on geo graph, a hotspot is an area such that 打车的request远多于available driver的数量
+
+7. how to design a system to detect if dispatch algorithm has some bug，dispatch主要是收集所有打车request和available driver的信息然后决定哪个driver 哪个客人
+
+Onsite过后两个小时通知我有offer了，如果onsite过后一两天之内没通知的话，基本上说明你的waiting list上，要等排在你前面的人据掉offer才可以继续下一步。
+
+
+
+Facebook
+initial round我是直接去onsite的，但是根据其他朋友的经验似乎电面或者onsite影响也根本不大，因为第一轮基本只要没有太大的纰漏都会过。
+
+Onsite：
+
+一共5轮，如果是4级的话会是3轮coding，1轮behavior和1轮system design。因为偏infra, 所以我有3轮是三哥，当时已经做好挂的准备了。
+
+1. move all 0s to right end of the array
+
+2. decode way
+
+3. binary tree inorder iterator
+
+4. determine if there is a subarray sum to target number
+
+5. convert integer to string，1000 to “one thousand”
+
+6. system design - design facebook music system，只需要design service tier，两个API
+
+get_top_10_list_music_ids(int64 userid) - return top 10 most frequent
+
+listened music ids for a given user last week. 这个call在load页面的时候要进行，所以对latency要求比较高。record(int64 userid, int64 musicid, int64 timestamp) - 每当user听一首歌，就需要记录下来，这个可以asynch进行，需要eventually consistent，但不需要每听一首歌马上就能反映到上一个call中。要做各种spec和resource的estimation。
+
+7. 抄dropbox那个问题，get_hits_last_5mins(), record_hit()，但是后面又扯到system design，如何thread safe，如果是districuted syste怎么搞，能想到几种方法
+
+8. behavior那一轮基本上围绕着的主题是，你之前碰到什么难解决的问题，怎么解决的，你学到了什么，production有过什么比较傻叉的bug，怎么避免的。你之前做项目有没有cross team的，你怎么说服其他team听你的，等等。聊得过多导致最后没有时间所有这一轮没有coding
+
+我觉得我的运气很好，再次没有碰到很难的题目，尤其是算法。
+
+
+
+Google
+
+
+狗家如果真的想快的话还是可以的，我从开始被recruiter联系到offer也是一个周之内搞定。
+
+狗家和F家整个感觉都很好，面试官都很乐意帮忙，而且明显感觉到水平跟其他公司不一样，技术功底非常扎实。
+
+再次运气很好所以没有碰到很偏很难的题目，基本上就是水过了。其中几道比较有意思的题目：
+
+1. 一个正整数可以表示成其他几个正整数的平方和，给任何一个正整数，求最少的那几个正整数，平方和是给定的数，比如14 = 1^2 + 2^2 + 3^2，如果给的数是14，应该返回（1，2，3）
+
+2. 给一个dictionary，然后可以support的query是，给一个string，返回在dictionary里面包含给定string的所有character的最短的string
+
+3. 如何设计google login system
+
+4. web crawl的时候如何判断两个document是相同/相似的。

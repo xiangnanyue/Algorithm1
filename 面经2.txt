@@ -1,0 +1,299 @@
+palantir面经
+Misson: 
+-To make the world a better place, use technologies to solve real world problem.
+-Ivory trade tracking 
+
+HR round:
+1. how would you test a blender?  Intended use, unintended use, safety
+ Who's the user, what's your company's warranty, how does it handle standard products, how well does it make a milkshake, how does it handle rocks if you put them in there, should it handle rocks, etc. 
+
+1. how would you test a printer? 
+
+2. how would you find a repeating number in an array
+3. binary search, how many bits necessary to store 1000
+4. Explain the significance of 2^32 
+5. 100 Puzzle Hats: 
+a. Red is assigned a number of one, and Blue is assigned a number of two;
+b. Every person adds up the numerical total of all hats in front of him/her, plus the numerical total of all responses from people behind him/her;
+c. If the total is an even number, the response should be “Blue”; if the total is an odd number, the response should be “Red”,
+d. The last person in line has to guess and, therefore, has a 50/50 chance of surviving.
+
+6.Describe the basic functions of a hash map
+7.How would you explain a deadlock to a nontechnical person?   
+
+Tech Phone round 
+1. Flip a matrix https://oj.leetcode.com/problems/rotate-image/ 
+2. Remove duplicates in an unsorted array where the duplicates are at a distance of k or less from each other.
+Hashset(k)
+
+3. Convert a tree to a linked list. Inorder traverse
+http://leetcode.com/2010/11/convert-binary-search-tree-bst-to.html
+
+4. Given an unsorted list of integers, return true if the list contains any duplicates and false if it does not contain any duplicates. You do not have to identify the duplicate value.
+O(n) hashset
+
+5. Given an unsorted list of integers, return true if the list contains any duplicates with k indices of each element. do it faster than O(n^2).  O(n) hash map 
+
+
+Given an unsorted list of integers, return true if the list contains any fuzzy duplicates within k indices of each element. A fuzzy duplicate is another integer within d of the original integer. Example: If d=4, then 6 is a fuzzy duplicate of 3 but 8 is not. Do it faster than O(n^2). O(n) hash set
+https://sites.google.com/site/jiejavastudy/home/array---find-duplicate-within-k
+6. Given 3 distinct ways to find the kth largest value in a list of N items
+https://www.youtube.com/watch?v=pdmZpAJ2uBM
+quick select O(n), 
+heap (O(nlogk), 
+http://mattcb.blogspot.com/2012/12/find-kth-smallest-element-in-array.html
+sort + scan O(nlogn)
+http://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
+7. Given a stream of integers, all of which comes in pairs except for 1. find that 1.
+8. Sort an array where each item is at most k indices from it's original position in the sorted array. What is the run time?
+http://www.geeksforgeeks.org/nearly-sorted-algorithm/
+
+9. Given a number k, and an array of integers A, find two integers in the array which sum to k. Do this in linear time and O(n) space, iterating over the array exactly once. Now do this in constant space and O(n log n) time.
+two sum: 
+Hashset: http://www.ninechapter.com/solutions/two-sum/
+sort: https://oj.leetcode.com/problems/two-sum/ 
+
+10. Print a Binary tree using BFS, add a line break between each level
+https://oj.leetcode.com/problems/binary-tree-level-order-traversal/ use a null as separator
+
+11. Create a stack with fixed size
+public FixedStack<T>(int size)
+    {
+        this.stack = new T[size];
+        this.top = -1;
+        this.size = size;
+    }
+12. Implement external mergesort given text file of numbers.
+
+
+14. Which num in an unsorted list can be represented as a sum of 3 other nums in the list
+15. 
+Write a function that finds all the different ways you can split up a word into a concatenation of two other words.   View Answers (3)
+Say you have an unordered list of numbers ranging from 1 to n, and one of the numbers is removed, how do you find that number? What if two numbers are removed?   View Answers (6)
+16. 
+Given a string of integers of undefined length, how would you choose an element uniformly at random using only a constant amount of space? How would you prove that your algorithm is correct?   View Answers (2) reservoir sampling
+Given a list of positive and/or negative integers, how would you determine if any 3 elements sum to 0? What is runtime? How about for $k$ elements summing to 0?   View Answers (2)
+17. 
+Given a list of numbers, find the median.   View Answers (3)
+Follow up to question 1: If inserting a 1000 numbers then finding the median a 1000 times, and you had to choose between either a logn insert algorithm or a logn median look up, which would be better?   View Answer
+Given a stack of numbers, determine the minimum number in the stack at all times in O(1)   
+
+18. Use a stack to implement a queue.
+2 stack: StackA, StackB
+enqueue: StackA.push() 
+dequeue: pop all from StackA, push all into StackB, pop from StackB
+
+
+19. 
+What does synchronized means in Java? How can you avoid deadlocks?  Answer Question
+20. find the intersection of two lists... eg. [1,1,2] and [1,1,3 ] ---> [1,1]  
+
+Key unique: HashSet O(n+m)
+Key not unique: 2 pointer O(m+n)
+
+21. Sort the input character array based on the dictionary given. 
+
+http://www.careercup.com/question?id=15555705
+
+count sort, similar to sort color
+
+2014年7月24日
+http://www.mitbbs.com/article_t/JobHunting/32743271.html
+coding题目很简单就是Anagram的分组，给出一个列表和一个字符串，找出字符串所有的anagrams，标准的hashtable题目，要求代码和复杂度。然后要求怎么改进提高时间复杂度，这里虽然给出了答案，但说得比较混乱。不过面试官人挺好，一直和我交流给提示。
+
+最后问问题
+
+第二天HR发信要求另一轮电面，第一轮估计表现不是很突出。
+
+面试官语速真快，我有点紧张。
+直接是coding，一个BST的DFS，一个Binary tree的BFS，简单题，写完平静下来了。。。
+
+第二题是求当前输入的数值数组的median的online算法，不要求coding，CC150的题目，不过当时不记得了。给了naive算法， 优化的时候纠结了一会，后来提出BST还有heap的方法，简单描述了一下怎么保证得到median。这时面试时间已经过了，但面试官继续给出限定：只有少量内存怎么做。虽然提出了找window，但做shift什么的没怎么答出来，面试官说很close，然后解释了一通。最后还是问问题。
+
+
+2014年4月30
+03/27 电面
+Warmup: Read input in format: city, state, population (tab delimited file. 
+population is of form: integer number always followed by a 'k'). Note that 
+city name can contain spaces. Output the total population in each state in 
+descending order
+Given an array of integers which is initially increasing and then decreasing
+, find the maximum value in the array.
+Given a stream of integers, find top K (heap)
+Given an array of integers, find top K. top K elements do not need to be 
+sorted. (quick select the Nth, then scan the array again, linear complexity)
+04/18 onsite: 他家第二轮感觉是个ABC，其他都是白人…
+Round 1: 写一个 Tree iterator
+Round 2: Longest substring which repeated in a string, example: banana, 
+return ana
+Flatten BST to in-order doubly linked list
+Round 3: Given stocks with dates and values. For multiple companies. For 
+each date, return the current total amount of stock you have. (a variation 
+of Merge K sorted array)
+Round 4: Word search in leetcode
+Round 5: Convert map<A, map<B, C> > to map<C, map<B, set<A> > >
+Find k missing numbers in an array 1-N
+面完感觉一般，23号收到拒信……
+http://www.mitbbs.com/article_t/JobHunting/32685617.html
+
+2014年4月
+
+http://www.mitbbs.com/article_t/JobHunting/32674339.html
+Phone：
+求两个List<Interval>的交集，假设每个list中的interval都是disjoint的。
+
+onsite:
+1）给你一个list的字符串，找出一个list的prefix，从而可以uniquely identify每个
+字符串。
+Hint：此题可以用trie来解决
+
+2）给你一棵树，implement一个iterator，可以是BFS或者DFS。要求用iterative 
+method来实现。
+Hint：选择DFS
+
+3）压缩算法。用树的变形来表示一个string，比如 B->left = A, B->right = A, 此
+种情况我们可以把B的left, right同时指向A。
+问题1）对于一个有n个节点的树，可以表示的最长string的长度
+问题2）implement get(Tree t, int position)，返回这个字符串在position的字符。
+Hint：exponential + binary search
+
+4)猜字游戏，有一个board和dictionary，从一个字符出发，你被允许走8个方向。如果
+已经有了以下method，isWord(String str)和isPrefix(String str)。你怎么把所有的词打印出来。你可以假设解法唯一。
+Hint： BFS
+
+4月：
+http://www.mitbbs.com/article_t/JobHunting/32672247.html
+有一个binary directed acyclic graph， 每个node存有一个字符，有一个左节点和一个右节点。
+（node定义如下：
+Node {   
+Node L; 
+Node R; 
+char ch;
+}
+）
+
+这样如果in-order traverse这个DAG，就会得到一个string。例子如下：假设一个DAG
+只有两个node，分别装着A和B这两个字符。假设Node A的左右两条边都指向Node B:
+A (root node)
+||
+B
+那么这个存储的string就是BAB
+
+现在假设已经有了一个这样的DAG, 请写一个函数，返回这个string的第k个字符。要求复杂度不能是exponential的。。。
+
+2013年2月
+palantir:
+1）warm-up: 给定一个array，如果有duplicate，返回true，否则，false
+2）改进一：如果存在duplicate元素间index的距离不超过k，返回true，否则，false
+   比如a[1]=a[3]=3, k=2,那么3-1=2 <=2, 返回true
+   比如a[1]=a[3]=3, k=1,那么3-1=2 > 1, 继续找
+    
+   我用了HashMap记录每个元素的index，如果第二次遇到，比较当前index和前面记录的值，满足条件就返回true，否则继续找，空间>O(N),被问能不能优化空间，没想出来，提示说只要记录k个数字就行了，于是我用了个linked hash map,超过k个，自动踢出最老的，表示可以，但有点overkill了
+
+3）改进二：如果存在两个元素间index的距离不超过k，差的绝对值不超过l,返回true，否则， false
+   比如a[1]=2, a[3]=3, k=2,l=3, 那么3-1=2 <=2(k), 3-2 < 3(l)返回true
+   同理，如果l=0, 继续找
+   写了个O(K*N)的算法，表示认可，问能不能弄个更快的，我表示没想法，然后问了几个问题就完了
+
+2012年11月：
+1.(a) 一个大的脚本文件里有很多测试的时间戳（可能是混乱的），怎么设计算法和数
+据结构返回测试用的时间。比如：
+
+2011-01-01 13:49:12 Test started
+2011-01-01 13:50:33 Test ended
+
+返回 myData.timeTaken("Test") => 81
+
+(b) 在(a)的基础上，如果有多套测试，怎么设计。比如：
+
+2011-01-01 13:49:12 MyTests.SimpleTests.TestA started
+2011-01-01 13:51:33 MyTests.SimpleTests.TestA ended
+2011-01-01 13:51:36 MyTests.SimpleTests.TestB started
+2011-01-01 13:51:45 MyTests.SimpleTests.TestB ended
+2011-01-01 13:52:00 MyTests.QuickTests.Test1 started
+2011-01-01 13:52:03 MyTests.QuickTests.Test1 ended
+
+应该返回
+
+myData.timeTaken("SimpleTests") => 141 + 9 => 150
+myData.timeTaken("MyTests") => 141 + 9 + 3 => 153
+
+2. 设计排序算法：sort a list of n numbers where each number is at most k 
+indices away, where k << n
+
+
+2012年：
+第一轮：
+1. Given: 
+- integer array [-3, 0, 1, 2, -5, 6, 2, 0]
+- start index i into the array
+- end index j into the array
+- i <= j
+
+Find: the sum of the elements between i and j, inclusive.
+Example:
+i = 2
+j = 5
+return 1 + 2 + (-5) + 6 = 4
+
+Assumptions:
+- array does not change
+- many requests for the sum between different i's and j's.
+
+2. In the previous problem, you calculated the range sum between indices (i,
+j). Now given an array, find the largest range sum in the array.  The array 
+can contain negative numbers.
+
+第二轮：
+Given a table:
+
+Name    Size   Color    ...
+AAA     Med    Red      ...
+BBB     Med    Red      ...
+CCC     Big    Blue     ...
+DDD     Big    Red      ...
+EEE     Small  Blue     ...
+
+Input:   String[][] table, and String[] order = {"Color", "Size", "Name"...}
+Output:
+Red
+    Med
+         AAA
+         BBB
+    Big
+         DDD
+Blue
+    Small
+         EEE
+    Big
+         CCC
+
+Note "order" gives the order of the output of the columns.
+http://www.mitbbs.com/article_t/JobHunting/32263875.html
+2011年
+finbonaci number，是前三个数的和而不是两个；写代码；改进；logn算法
+range sum query，array，给[i,j]算区间内元素和，给出不同的space/time 
+complexity组合，在提示下给出一个n^1/2 space/time complexity的算法
+同上，现在的数组是2维，给出一个O(n^2) time/space complexity的预
+处理方法，然后是一个O(1)的query
+最后一个设计题，一个目录下面有别的目录和source file，要把所有的source file的一个name替换，考regular expression，然后修改的时候要备份所有文件，然后问了他两个问题
+
+
+12月5日
+1.  设计一个牌类游戏 OOD
+2. 设计一个服务监视系統。说你有一堆服务器和一堆服务，怎么监视服务状态。 系统
+设计。各种情况。各种要求。
+3. 设计一个企业内部用的那种日志系统。大概的用途是A发现一个什么问题，log问题
+，相关的人会接到通知。半系统半OOD。中间面试我的人想给我点提醒。说中间某部分
+可以用某种design pattern来做。不过那个design pattern不是factory singleton 
+observer strategy等几个常见的。所以提示了和没提示一样。
+
+4. 设计一个和配置相关的系统。大概的功能是比如A要买你的软件，人家可能不需要把
+你所有的功能买走。他提出了一些他想实现的功能，然后你把你内部的一些模块啥的拼
+一拼然后给人家。这样一个系统怎么设计。
+
+第一题基本还有个参照。按CC150思路走的。不过也被拍死了。cc150的结构大概适合于
+赌场游戏。他说如果像UNO那种。你这个设计就不行。直接就傻逼了。时间也到了。这
+个里面让做了个洗牌。然后讨论为什么我的洗法能够实现纯随机。就是可以等概率的洗
+出任意一种可能
+Posted 16th July 2015 by Wei Shen

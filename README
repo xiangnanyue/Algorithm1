@@ -1,0 +1,19 @@
+https://algs4.cs.princeton.edu/mac/
+
+Leet/Lint code reference: 
+https://aaronice.gitbooks.io/lintcode/content/union_find/surrounded_regions.html
+
+To compile:
+>>javac-algs4 TestAlgs4
+
+To run
+>>java-algs4 TestAlgs4
+
+To create directory by package name, 
+为Java类添加包必须在Java源文件中通过package语句指定, mv .class 到指定文件夹是不行的
+put "package lib;" on the beginning of In.java and run
+>> javac -d . In.java
+the class file will be under the lib directory.
+
+But we can simply create a directory by the package name and run main()
+
