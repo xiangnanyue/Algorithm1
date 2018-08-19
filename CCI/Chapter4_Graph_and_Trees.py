@@ -1,4 +1,10 @@
 
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 #4.1 route between Nodes
 #
 
@@ -408,6 +414,10 @@ class BuildOrder(object):
                             print('add:', node)
         return orderStack[::-1]
 
+def test_BuildOrder():
+    project = [0,1, 2, 3, 4]
+    dependents = [[0,1], [0,2], [1,2], [2,3], [3,4], [0, 4]]
+    print(BuildOrder.buildOrder(project, dependents))
 
 #Ex: can you use BFS for topological sorting?
 
@@ -508,13 +518,196 @@ how to list all probabilities of C(m,n).
 - using dfs (listing by trim)
 """
 class BSTSequence(object):
-    def __init__(self, root):
-        pass
+
+    def get_bst_sequences(self, root):
+        
+        if root is None:
+            return [[]]
+        
+        left_sequences = self.get_bst_sequences(root.left)
+        right_sequences = self.get_bst_sequences(root.right)
+        print(root.val, left_sequences, right_sequences)
+
+        sequences = self.weave(left_sequences, right_sequences)
+        print(sequences)
+
+        # add root to the head of sequences
+        for seq in sequences:
+            seq.insert(0, root.val)
+
+        return sequences
+
+    def weave(self, lefts, rights):
+        sols = []
+        for left in lefts:
+            for right in rights:
+                sols += self.merge(left, right)
+        return sols
+
+    def merge(self, left, right):
+        leftLength = len(left)
+        rightLength = len(right)
+        dic = (leftLength, rightLength)
+
+        combinations = []
+        current = []
+        self.dfs_(current, dic, combinations, left, right)
+
+        return combinations
+
+
+    def dfs_(self, current, dic, combinations, left, right):
+        
+        if dic[0] == 0 and dic[1] == 0:
+            combinations.append(current)
+            return 
+        if dic[0] == 0:
+            current += right[:dic[1]]
+            combinations.append(current)
+            return
+        if dic[1] == 0:
+            current += left[:dic[0]]
+            combinations.append(current)
+            return
+        
+        newcurrent = current + [left[dic[0]-1]]
+        self.dfs_(newcurrent, (dic[0]-1, dic[1]), combinations, left, right)
+        newcurrent = current + [right[dic[1]-1]]
+        self.dfs_(newcurrent, (dic[0], dic[1]-1), combinations, left, right)        
+
+def test_BSTSequence():
+    root = TreeNode(2)
+    root.left = TreeNode(1)
+    root.right = TreeNode(3)
+    sol = BSTSequence()
+    sequences = sol.get_bst_sequences(root)
+    print(sequences)  # [[2, 1, 3], [2, 3, 1]]
+
+
+#
+#4.10 check subtree
+#
+
+class Solution4_10(object):
+
+    def isSubtree(self, s, t):
+        """
+        :type s: TreeNode
+        :type t: TreeNode
+        :rtype: bool
+        """
+        if s is None and t is None:
+            return True
+        elif s is None:
+            return False
+        elif t is None:
+            return True
+        elif s.val == t.val:
+            if self.isSame(s.left, t.left) and self.isSame(s.right, t.right):
+                return True
+        return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
+
+    def isSame(self, s, t):
+        if s is None and t is None:
+            return True
+        elif s is None:
+            return False
+        elif t is None :
+            return False
+        else:
+            return s.val == t.val and self.isSame(s.left, t.left) and self.isSame(s.right, t.right)
+
+# you can also use pre-order traverse to transfer two trees to string
+# and use string matching algorithm to find pattern
+# https://www.jiuzhang.com/solution/subtree/#tag-highlight-lang-python
+
+
+#
+#4.11 Random Node
+#https://www.geeksforgeeks.org/select-random-node-tree-equal-probability/
+
+
+
+#
+#4.12 path sum to a given value (from any node to another node)
+#https://leetcode.com/problems/path-sum-iii/description/
+
+class Solution4_12(object):
+    # following is a recursive solution, complexity h*2^h, h is the height
+    def pathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: int
+        """
+        if root is None:
+            return 0
+        return self.pathSum(root.right, sum) + self.pathSum(root.left, sum) + self.start_from(root, sum)
+        
+    def start_from(self, node, sum):
+        if node is None:
+            return 0
+        
+        rest = sum - node.val
+        if rest == 0:
+            return 1 + self.start_from(node.left, rest) + self.start_from(node.right, rest)
+        else:
+            return self.start_from(node.left, rest) + self.start_from(node.right, rest)
+
+
+
+
+##Ex: from root to leaf
+#https://leetcode.com/problems/path-sum/description/
+#https://leetcode.com/problems/path-sum-ii/description/
+
+
+class HasPath(object):
+    
+    def hasPathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: bool
+        """
+        if root is None:
+            return False
+
+        rest = sum - root.val
+        if rest == 0 and root.right is None and root.left is None:
+            return True
+        else:
+            return self.hasPathSum(root.right, rest) or self.hasPathSum(root.left, rest)
+
+    def pathSum(self, root, sum):
+    """
+    :type root: TreeNode
+    :type sum: int
+    :rtype: List[List[int]]
+    """
+    if root is None:
+        return []
+    current = []
+    combinations = []
+    self.search_(current, root, sum, combinations)
+    return combinations
+
+    def search_(self, current, root, sum, combinations):
+        if root is None:
+            return 
+        
+        newcurrent = current + [root.val]
+        rest = sum - root.val
+        if root.left is None and root.right is None:
+            if rest == 0:
+                combinations.append(newcurrent)
+            else:
+                return 
+        self.search_(newcurrent, root.left, rest, combinations)
+        self.search_(newcurrent, root.right, rest, combinations)
 
 
 
 
 if __name__ == "__main__":
-    project = [0,1, 2, 3, 4]
-    dependents = [[0,1], [0,2], [1,2], [2,3], [3,4], [0, 4]]
-    print(BuildOrder.buildOrder(project, dependents))
+    test_BSTSequence()
